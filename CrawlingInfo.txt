@@ -1,0 +1,9 @@
+https://steamcommunity.com/id/songmin9813/games/?tab=all
+https://steamcommunity.com/id/songmin9813/screenshots/
+profile_count_link_total
+
+https://steamcommunity.com/id/songmin9813/games/?tab=all&sort=playtime
+ellipsis hours_played : 기록상 xxx시간
+
+https://steamcommunity.com/id/songmin9813/games/?tab=recent
+ellipsis hours_played : 지난 2주간 xxx시간 / 기록상 xxx시간
