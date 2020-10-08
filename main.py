@@ -9,6 +9,7 @@ def print_steam_crawl(steamID,ID_Range,fileNum):
     for n in range(ID_Range):
         time.sleep(20)
         steamID=steamID+1
+        print('current data: '+steamID+'\n')
         string_ID=str(steamID)
         url='https://steamcommunity.com/profiles/'+string_ID+'/games/?tab=all&sort=playtime'
         try: #private user check
@@ -41,10 +42,11 @@ def print_steam_crawl(steamID,ID_Range,fileNum):
             continue
 
 
-            pages=100000
-            now=datetime.now()
-            print_steam_crawl(76561197960265728,pages,0)
-            #https://steamcommunity.com/profiles/76561198120029537/games/?tab=all&sort=playtime->test 427 error
-            #76561197960265728 first steam user profiles
+pages=100000
+#now=datetime.now()
+f1=open("hi.csv",'w')
+print_steam_crawl(76561197960265728,pages,0)
+#https://steamcommunity.com/profiles/76561198120029537/games/?tab=all&sort=playtime->test 427 error
+#76561197960265728 first steam user profiles
 
 
