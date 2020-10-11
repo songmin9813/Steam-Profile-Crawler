@@ -8,4 +8,10 @@ ellipsis hours_played : 기록상 xxx시간
 https://steamcommunity.com/id/songmin9813/games/?tab=recent
 ellipsis hours_played : 지난 2주간 xxx시간 / 기록상 xxx시간
 
+prifile_rightcol - profile_item_links - profile_count_link_total
+span.total_num_games
+
 스크린샷 개수, 가이드 개수, 찜목록 개수, 19년 이후 릴리즈 구매 이력, 보유 게임 개수
+
+
+"logo":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/582010\/
