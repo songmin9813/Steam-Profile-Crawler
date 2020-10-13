@@ -82,12 +82,10 @@ def print_steam_crawl(steamID, ID_Range, fileNum):
                 f.write(sentence + ',')
             except:
                 continue
-        driver=webdriver.Chrome('C:/Users/mitha/OneDrive/바탕 화면/dev/Crawling_Data/chromedriver')
         options=webdriver.ChromeOptions()
         options.add_argument('headless')
         options.add_argument('disable-gpu')
-        options.add_argument('lang=ko_KR')
-        driver=webdriver.Chrome(driver,options=options)
+        driver=webdriver.Chrome('C:/Users/mitha/OneDrive/바탕 화면/dev/Crawling_Data/chromedriver',chrome_options=options)
         driver.get('https://store.steampowered.com/wishlist/profiles/' + string_ID)
         html = driver.page_source
         soup = BeautifulSoup(html, "html.parser")
