@@ -3,6 +3,9 @@ import requests
 import json
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 def print_steam_crawl(steamID, ID_Range, fileNum):
@@ -83,14 +86,15 @@ def print_steam_crawl(steamID, ID_Range, fileNum):
             except:
                 continue
         options=webdriver.ChromeOptions()
-        options.add_argument('headless')
+        #options.add_argument('headless')
         options.add_argument('disable-gpu')
-        driver=webdriver.Chrome('C:/Users/mitha/OneDrive/바탕 화면/dev/Crawling_Data/chromedriver',chrome_options=options)
+        driver=webdriver.Chrome('C:/Users/mitha/OneDrive/바탕 화면/dev/Crawling_Data/chromedriver',options=options)
         driver.get('https://store.steampowered.com/wishlist/profiles/' + string_ID)
-        html = driver.page_source
-        soup = BeautifulSoup(html, "html.parser")
+        WebDriverWait(driver,10).until(EC.presence_of_all_elements_located((By.ID,'total_num_games')))
+        html=driver.page_source
         print(html)
-        wishlist = soup.select("span.total_num_games")
+        soup = BeautifulSoup(html, "html.parser")
+        wishlist = soup.select('span.total_num_games')
         print(wishlist)
         f.close()
 
