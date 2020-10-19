@@ -15,3 +15,7 @@ span.total_num_games
 
 
 "logo":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/582010\/
+
+#total_num_games
+<span id="total_num_games">23</span>
+//*[@id="total_num_games"]
