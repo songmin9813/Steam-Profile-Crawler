@@ -29,14 +29,15 @@ def print_steam_crawl(steamID, ID_Range, fileNum):
         except:
             continue
         if (str(SteamGame) != "[]" and 'hours_forever' in gameList):
-            f = open('C:/Users/mitha/OneDrive/바탕 화면/dev/Crawling_Data/' + string_ID + '.csv', 'w')
+            f = open('Crawling_Data/'+string_ID + '.csv', 'w')
             f.write('GameName,Id:' + string_ID + '\n')
             for course in SteamGame:
                 try:  # empty playtime check
                     gameName = '{name}'.format(**course)
                     gameName = gameName.replace(',', ' ')  # if comma inside gamename, replace space
                     gameTime = '{hours_forever}'.format(**course)
-                    gameTime = gameTime.replace(',', ' ')
+                    gameTime = gameTime.replace(',', '')
+
                     # gameData='{logo}'.format(**course)
                     # gameData=gameData[50:-19]
                     # html=requests.get('https://store.steampowered.com/app/'+gameData).text
@@ -87,19 +88,17 @@ def print_steam_crawl(steamID, ID_Range, fileNum):
                 continue
         options=webdriver.ChromeOptions()
         #options.add_argument('headless')
-        options.add_argument('disable-gpu')
-        driver=webdriver.Chrome('C:/Users/mitha/OneDrive/바탕 화면/dev/Crawling_Data/chromedriver',options=options)
-        driver.get('https://store.steampowered.com/wishlist/profiles/' + string_ID)
-        WebDriverWait(driver,10).until(EC.presence_of_all_elements_located((By.ID,'total_num_games')))
-        html=driver.page_source
-        print(html)
-        soup = BeautifulSoup(html, "html.parser")
-        wishlist = soup.select('span.total_num_games')
-        print(wishlist)
+        #options.add_argument('disable-gpu')
+        #driver=webdriver.Chrome('chromedriver',options=options)
+        #driver.get('https://store.steampowered.com/wishlist/profiles/' + string_ID)
+        url='https://store.steampowered.com/wishlist/profiles/' + string_ID
+        wishlist_url = json.loads(re.findall(r'g_strWishlistBaseURL = (".*?");', requests.get(url).text)[0])
+        data = requests.get(wishlist_url + 'wishlistdata/?p=0').json()
+        print(json.dumps(data, indent=4))
         f.close()
 
 
 pages = 1
 print_steam_crawl(76561198048511277, pages, 0)
 # https://steamcommunity.com/profiles/76561198120029537/games/?tab=all&sort=playtime->test 427 error
-# 76561197960265728 first steam user profiles
+# 76561197960265728 first steam user profiles, 76561198261943701 showmkk LOL, 76561198048511278 ME
