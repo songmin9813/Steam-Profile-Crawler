@@ -87,15 +87,15 @@ def print_steam_crawl(steamID, ID_Range, fileNum):
             except:
                 continue
         options=webdriver.ChromeOptions()
-        #options.add_argument('headless')
+        options.add_argument('headless')
         options.add_argument('disable-gpu')
         driver=webdriver.Chrome('chromedriver',options=options)
-        driver.get('https://store.steampowered.com/wishlist/profiles/' + string_ID)
-        element=WebDriverWait(driver,10).until(EC.presence_of_all_elements_located((By.ID,'total_num_games')))
+        driver.implicitly_wait(10)
+        driver.get('https://www.steamwishlistcalculator.com/?id=' + string_ID+'&currency=US')
         html=driver.page_source
         print(html)
         soup = BeautifulSoup(html, "html.parser")
-        wishlist = soup.select('span.total_num_games')
+        wishlist = soup.find({'id':'titleCount'})
         print(wishlist)
         f.close()
 
