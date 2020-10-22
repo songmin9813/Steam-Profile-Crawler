@@ -97,8 +97,8 @@ def print_steam_crawl(steamID, ID_Range, fileNum):
         #print(wishlist)
         f.close()
 
-
-pages = 1
-print_steam_crawl(76561198261943700, pages, 0)
+profileNum=int(input('input start id: '))
+pages = int(input('how many pages?: '))
+print_steam_crawl(profileNum, pages, 0)
 # https://steamcommunity.com/profiles/76561198120029537/games/?tab=all&sort=playtime->test 427 error
 # 76561197960265728 first steam user profiles, 76561198261943701 showmkk LOL, 76561198048511278 ME
