@@ -19,3 +19,6 @@ span.total_num_games
 #total_num_games
 <span id="total_num_games">23</span>
 //*[@id="total_num_games"]
+
+목록 4자리 넘어가면 따로 체크되는 이슈
+위시리스트 로드 안 되는 이슈
