@@ -81,7 +81,8 @@ def print_steam_crawl(steamID, ID_Range, fileNum):
             try:
                 sentence = key.text.join(key.text.split())
                 if (sentence == ''):
-                    sentence = '0'
+                    sentence = '?'
+                sentence=sentence.replace(',','')
                 f.write(sentence + ',')
             except:
                 continue
@@ -90,7 +91,7 @@ def print_steam_crawl(steamID, ID_Range, fileNum):
         options.add_argument('disable-gpu')
         driver=webdriver.Chrome('chromedriver',options=options)
         driver.get('https://www.steamwishlistcalculator.com/?id=' + string_ID+'&currency=US')
-        element=WebDriverWait(driver,10).until(EC.presence_of_element_located((By.ID,'titleCount')))
+        element=WebDriverWait(driver,30).until(EC.presence_of_element_located((By.ID,'titleCount')))
         f.write(element.text)
         #soup = BeautifulSoup(html, "html.parser")
         #wishlist = soup.find({'id':'titleCount'})
