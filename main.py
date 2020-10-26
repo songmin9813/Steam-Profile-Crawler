@@ -90,9 +90,16 @@ def print_steam_crawl(steamID, ID_Range, fileNum):
         options.add_argument('headless')
         options.add_argument('disable-gpu')
         driver=webdriver.Chrome('chromedriver',options=options)
-        driver.get('https://www.steamwishlistcalculator.com/?id=' + string_ID+'&currency=US')
-        element=WebDriverWait(driver,30).until(EC.presence_of_element_located((By.ID,'titleCount')))
+        try:
+            driver.get('https://www.steamwishlistcalculator.com/?id=' + string_ID+'&currency=US')
+            element=WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.ID,'titleCount')))
+        except:
+            f.write('0')
+            driver.close()
+            f.close()
+            continue
         f.write(element.text)
+        driver.close()
         #soup = BeautifulSoup(html, "html.parser")
         #wishlist = soup.find({'id':'titleCount'})
         #print(wishlist)
