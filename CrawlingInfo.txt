@@ -38,3 +38,21 @@ span.total_num_games
 ~4400 for my com
 ~9281 for HS
 ~282 for tablet
+
+오후 8:43 2020-10-26
+~4510 for my com
+~
+~386 for tablet
+76561198252400000~62 for VM
+
+오후 11:39 2020-10-26
+~4617 for my com
+~9571 for HS
+~557 for tablet
+~282 for VM
+10/26 result : 282+557+870+897=2596 (33+7+32+39=111)
+
+76561198264944617 for my com
+76561198264949571 for HS
+76561198252500557 for tablet
+76561198252400282 for VM
