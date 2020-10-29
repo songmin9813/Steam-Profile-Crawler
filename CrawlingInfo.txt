@@ -66,3 +66,8 @@ pc 절전모드 원래 30분 / 태블릿은 10분
 ~6026 for my com
 ~1618 for VM
 ~1896 for talbet
+
+오전 2:11 2020-10-29
+~2275 for tablet
+~7808 for my com
+~3991 for VM
