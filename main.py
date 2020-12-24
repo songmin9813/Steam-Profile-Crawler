@@ -2,6 +2,7 @@ import re
 import requests
 import json
 import time
+import os
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -51,8 +52,13 @@ def print_steam_crawl(steamID, ID_Range, fileNum):
             continue
         html = requests.get('https://steamcommunity.com/profiles/' + string_ID + '/games/?tab=recent').text
         htmlSearch = re.search('var rgGames =(.+?);', html, re.S)
-        gameList = htmlSearch.group(1)
-        SteamGame = json.loads(gameList)
+        try:
+            gameList = htmlSearch.group(1)
+            SteamGame = json.loads(gameList)
+        except:
+            os.remove('Crawling_Data/'+string_ID + '.csv')
+            print('JSON error')
+            continue
         if (str(SteamGame) != "[]" and 'hours' in gameList):
             f.write('\n' + 'Recently Played' + '\n')
             for course in SteamGame:
